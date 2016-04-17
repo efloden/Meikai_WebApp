@@ -7,6 +7,36 @@
 
 body {
   padding: 0;
+  background: no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.panel {
+  background-color: rgba(245, 245, 245, .9);
+}
+.jumbotron {
+  background-color: rgba(245, 245, 245, .9);
+}
+
+.navbar-default {
+  background-color: #292929;
+  border-color: transparent;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #ffffff;
+}
+
+.navbar-default .navbar-brand {
+    color: #fff;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    background-color: #E7E7E7;
+    color: #777;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
