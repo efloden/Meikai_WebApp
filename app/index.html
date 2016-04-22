@@ -39,10 +39,10 @@
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/study">Study</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/contact">Contact</a></li>
+              <li><a href="#/" ng-class="isActive == 'main' ? 'active' : ' ' ">Home</a></li>
+              <!-- <li><a ng-href="#/study" ng-class="isActive == 'study' ? 'active' : ' ' ">Study</a></li> -->
+              <li><a ng-href="#/about" ng-class="isActive == 'about' ? 'active' : ' ' ">About</a></li>
+              <li><a ng-href="#/contact" ng-class="isActive == 'contact' ? 'active' : ' ' ">Contact</a></li>
             </ul>
           </div>
         </div>

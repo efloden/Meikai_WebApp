@@ -24,4 +24,7 @@
      $scope.removeKanji = function (index) {
        $scope.kanjis.splice(index, 1);
      };
+     $scope.generateKanji = function () {
+       $scope.kanjis.push('火 ひ Fire');
+     };
    });

@@ -1,5 +1,6 @@
 <style>
   body {
+    background-color: black;
     background-image: url("images/tokyodoro.jpg");
   }
   item {
@@ -27,8 +28,9 @@
           </div>
       </div>
 
-      <a class="btn btn-default" role="button" ng-repeat="kanji in kanjis" onclick="$('#slider').carousel('next')">
+      <a id="selection"class="btn btn-default" role="button" ng-repeat="kanji in kanjis" onclick="$('#slider').carousel('next');" >
         {{ kanji }}
       </a>
   </div>
 </div>
+<script src="scripts/feature.js"></script>

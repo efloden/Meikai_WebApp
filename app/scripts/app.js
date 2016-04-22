@@ -8,7 +8,7 @@
  *
  * Main module of the application.
  */
-angular
+var app = angular
   .module('meikaiAppApp', [
     'ngAnimate',
     'ngAria',
@@ -29,24 +29,34 @@ angular
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
-        controllerAs: 'main'
+        controllerAs: 'main',
+        routeName: 'main'
       })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',
-        controllerAs: 'about'
+        controllerAs: 'about',
+        routeName: 'about'
       })
       .when('/contact', {
         templateUrl: 'views/contact.html',
         controller: 'ContactCtrl',
-        controllerAs: 'contact'
+        controllerAs: 'contact',
+        routeName: 'contact',
       })
       .when('/study', {
         templateUrl: 'views/study.html',
         controller: 'StudyCtrl',
-        controllerAs: 'study'
+        controllerAs: 'study',
+        routeName: 'study'
       })
       .otherwise({
         redirectTo: '/'
       });
   });
+  app.run(function($rootScope){
+     $rootScope.$on('$routeChangeStart', function (evt, next, currentRoute) {
+          $rootScope.isActive = next.$$route.routeName;
+          console.log($rootScope.isActive)
+     });
+  })
