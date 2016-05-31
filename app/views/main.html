@@ -24,22 +24,31 @@
         Need Help?
       </a>
        <div id="light" class="white_content">
-         <div class="carousel" id="slider" style="margin-left: 20px;">
+         <div class="carousel" id="slider" data-interval="false" style="margin-left: 20px;">
 
              <label class="labelSecurity"><h1>Flash Cards<h1></label><br />
 
              <div class="carousel-inner">
-                 <div class="item" ng-class="{active:!$index}" ng-repeat="kanji in kanjis" style="font-size: 100px;">
-                     {{ kanji }}
+                 <div class="item" ng-class="{active:!$index}" ng-repeat="(kindex, kanji) in kanjis" style="font-size: 100px;">
+                    <div style="margin-left:.8em;">
+                       {{ kanji.split(' ')[0]}}
+                     <audio id="kanjisound"><source src="とうきょう.mp3" type="audio/mpeg"</source></audio>
+                     <a class="glyphicon glyphicon-volume-up" onclick="document.getElementById('kanjisound').play()" style="font-size: 30px;"></a> <br>
+                    </div>
+                     <a id="selection" class="btn btn-default" role="button" onclick="$('#slider').carousel('next');" ng-click="checkKanji(kindex, lindex)" ng-repeat="(lindex, kanji) in kanjis" >
+                       {{ kanji.split(' ')[2] }}
+                     </a>
                  </div>
              </div>
+             <p> Correct: {{ correct }} Incorrect: {{ incorrect }} Attempts: {{ attempts }}</p>
+             <p> Accuracy: {{ correct / attempts * 100 | number }}% </p>
 
-             <a id="selection"class="btn btn-default" role="button" ng-repeat="kanji in kanjis" onclick="$('#slider').carousel('next');" >
-               {{ kanji }}
-             </a>
          </div>
-        <a href = "javascript:void(0)" onclick = "feature_close()">
+        <a class="btn btn-default" href = "javascript:void(0)" onclick = "feature_close()" style="text-align: bottom;">
           Close
+        </a>
+        <a class="btn btn-default" href = "javascript:void(0)" onclick="$('#slider').carousel('next');" style="text-align: bottom;">
+          Next
         </a>
       </div>
        <div id="fade" class="black_overlay"></div>
@@ -48,6 +57,10 @@
 <div class="panel" style="margin-right:-40px; padding-bottom:30px; text-align: center;">
   <div class="container">
     <h2>Add your Flashcards</h2>
+    <a class="btn btn-default" role="button" ng-click="generatejson()">
+      Auto Generate
+    </a>
+
     <!-- Kanji input -->
       <form role="form" ng-submit="addKanji()">
         <div class="row">
